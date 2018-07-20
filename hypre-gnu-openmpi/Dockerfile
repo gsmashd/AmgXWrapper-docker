@@ -27,7 +27,7 @@ RUN apt-get update
 
 
 #INSTALL openmpi
-#RUN apt-get -y install libopenmpi-dev libopenmpi1.10 openmpi-bin openmpi-common
+RUN apt-get -y install libopenmpi-dev libopenmpi1.10 openmpi-bin openmpi-common
 
 #INSTALL ATLAS
 RUN apt-get -y install libatlas-base-dev libatlas-dev libatlas3-base
@@ -54,7 +54,7 @@ ENV PETSC_ARCH=hypre
 #CONFIGURE PETSc
 #RUN ./configure PETSC_ARCH=hypre-opts --download-parmetis --download-metis --download-ptscotch --download-hypre --with-debugging=0 --with-mpi-dir=/opt/openmpi COPTFLAGS='-O3 -march=native -mtune=native' CXXOPTFLAGS='-O3 -march=native -mtune=native'
 #RUN ./configure PETSC_ARCH=opts --with-clanguage=c --with-cc=mpicc --with-cxx=mpicxx --with-fc=mpif90 --with-debugging=0 COPTFLAGS='-O3 -march=native -mtune=native' CXXOPTFLAGS='-O3 -march=native -mtune=native' FOPTFLAGS='-O3 -march=native -mtune=native'
-RUN ./configure PETSC_ARCH=hypre --download-parmetis --download-metis --download-ptscotch --download-hypre --with-debugging=0 --with-cc=gcc --with-cxx=g++ --with-fc=0 --download-f2cblaslapack --download-mpich
+RUN ./configure PETSC_ARCH=hypre --download-parmetis --download-metis --download-ptscotch --download-hypre --with-debugging=0 --with-cc=mpicc --with-cxx=mpicxx --with-fc=0 --download-f2cblaslapack
 
 RUN make PETSC_DIR=$PETSC_DIR PETSC_ARCH=$PETSC_ARCH -j 16 all
 RUN make PETSC_DIR=$PETSC_DIR PETSC_ARCH=$PETSC_ARCH check

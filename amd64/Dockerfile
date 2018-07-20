@@ -88,4 +88,7 @@ CMD mpiexec --allow-run-as-root -n 4 bin/poisson -caseName test-petsc -mode PETS
 	mpiexec --allow-run-as-root -n 4 bin/poisson -caseName test -mode AmgX_GPU -cfgFileName  configs/AmgX_SolverOptions_AGG.info -Nx 500 -Ny 500
 
 
+
+
+
 #CMD /gpu-lib/stable/faster_gpu_quadratic_fem.out -pc_type sacusp -ksp_type cg -print_timings -nz 28 -mesh_path "../meshes/2order/h0-01/" -log_view
